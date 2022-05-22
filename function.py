@@ -3,7 +3,9 @@ import pygame
 import random
 from pygame.locals import *
 import sys
+from time import sleep
 from aritmatik import writeScore, maxScore
+from tamat import win 
 
 
 
@@ -129,7 +131,8 @@ def gameOver():
                     pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
                     if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                         welcomeScreen()
-           
+
+
 
 def getRandomPipe():
     """
@@ -227,6 +230,13 @@ def mainGame():
                 GAME_SPRITES['background'] = pygame.image.load('resources/SPRITES/PerpustakaanNasional.png')
             if score == 6:
                 GAME_SPRITES['background'] = pygame.image.load('resources/SPRITES/RektoratUI.png')
+        
+        #menang game
+        if score == 999:
+            win()
+            sleep(DELAY)
+            return
+            
         if playerVelY <playerMaxVelY and not playerFlapped:
             playerVelY += playerAccY
 

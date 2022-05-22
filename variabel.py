@@ -10,4 +10,5 @@ GAME_SOUNDS = {}
 PLAYER = 'resources\SPRITES\\bikun3.png'
 BACKGROUND = 'resources\SPRITES\\GerbangUI.png'
 PIPE = 'resources\SPRITES\Pipe3.png '
+DELAY = 5
 FPSCLOCK = pygame.time.Clock() #for controlling the FPS
