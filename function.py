@@ -97,7 +97,7 @@ def gameOver():
     GAME_SPRITES['OVER'] = pygame.image.load('resources/SPRITES/gameover2.png').convert_alpha()
     GAME_SPRITES['RETRY'] = pygame.image.load('resources/SPRITES/retry.png').convert_alpha()
     GAME_SPRITES['HOME'] = pygame.image.load('resources/SPRITES/Home.png').convert_alpha()
-    SCREEN.blit(display, (30,50))
+    SCREEN.blit(display, (20,50))
     # SCREEN.blit(GAME_SPRITES['background'],(0,0))
     SCREEN.blit(GAME_SPRITES['base'],(0,GROUNDY))
     SCREEN.blit(GAME_SPRITES['OVER'], (0,0))
