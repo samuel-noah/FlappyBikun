@@ -8,6 +8,8 @@ def maxScore():
     maxScore = 0
     file = open('score.txt', 'r')
     for line in file:
+        if line[0] == '\n':
+            continue
         if int(line) > maxScore:
             maxScore = int(line) 
     file.close()
