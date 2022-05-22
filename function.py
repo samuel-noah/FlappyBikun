@@ -3,7 +3,7 @@ import pygame
 import random
 from pygame.locals import *
 import sys
-import pygame_textinput
+from aritmatik import writeScore, maxScore
 
 
 
@@ -17,22 +17,12 @@ def welcomeScreen():
     messagey = int(SCREENHEIGHT * 0.13)
     basex = 0
     FONT = pygame.font.SysFont('monospace', 32)
-    text_input = pygame_textinput.TextInputVisualizer()
-    events = pygame.event.get()
-
-    
-    
-    
-    
+        
     # Drawing Rectangle for playbutton
     playbutton = pygame.Rect(108,222,68,65)
 
     while True:
-        text_input.update(events)
-        SCREEN.blit(text_input.surface,(30,50))
-        
-        for event in events:
-            
+        for event in pygame.event.get():
              #If user clicks on Cross or presses the Escape button Close the Game
             if event.type== QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                 pygame.quit()
@@ -54,9 +44,7 @@ def welcomeScreen():
 
             else :
 
-                # SCREEN.blit(GAME_SPRITES['background'],(0,0))
-                
-                
+                SCREEN.blit(GAME_SPRITES['background'],(0,0))
                 SCREEN.blit(GAME_SPRITES['player'],(playerx,playery))
                 SCREEN.blit(GAME_SPRITES['message'],(messagex,messagey))
                 SCREEN.blit(GAME_SPRITES['base'],(basex,GROUNDY))
@@ -67,20 +55,11 @@ def welcomeScreen():
                 FPSCLOCK.tick(FPS)
 
 
-playerScore = []
-
-def maxScore():
-    maxScore = 0
-    playerScore.append(score)
-    for i in playerScore:
-        if i > maxScore:
-            maxScore = i
-    return maxScore
-
 def isCollide(playerx, playery, upperPipes, lowerPipes):
     if playery> GROUNDY - 25  or playery<0:
         GAME_SOUNDS['hit'].play()
         pygame.mixer.music.stop()
+        writeScore(score)
         print('Max Score',maxScore())
         gameOver()
         
@@ -90,6 +69,7 @@ def isCollide(playerx, playery, upperPipes, lowerPipes):
             GAME_SOUNDS['hit'].play()
             print(playerx, pipe['x'],)
             pygame.mixer.music.stop()
+            writeScore(score)
             print('Max Score',maxScore())
             gameOver()
             
@@ -98,6 +78,7 @@ def isCollide(playerx, playery, upperPipes, lowerPipes):
         if (playery + GAME_SPRITES['player'].get_height() > pipe['y']) and abs(playerx - pipe['x']) < GAME_SPRITES['pipe'][0].get_width()-20:
             GAME_SOUNDS['hit'].play()
             pygame.mixer.music.stop()
+            writeScore(score)
             print('Max Score',maxScore())
             gameOver()
 
@@ -166,6 +147,8 @@ def getRandomPipe():
         {'x': pipeX, 'y': y2}   #Lower Pipes
     ]
     return pipe 
+
+
 
 def mainGame():
     
@@ -289,3 +272,6 @@ def mainGame():
             Xoffset += GAME_SPRITES['numbers'][digit].get_width()
         pygame.display.update()
         FPSCLOCK.tick(FPS)
+
+
+
