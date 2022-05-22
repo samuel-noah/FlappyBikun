@@ -220,15 +220,15 @@ def mainGame():
                 GAME_SOUNDS['point'].play()
             if score == 0:
                 GAME_SPRITES['background'] = pygame.image.load('resources/SPRITES/GerbangUI.png')
-            if score == 2:
+            if score == 10:
                 GAME_SPRITES['background'] = pygame.image.load('resources/SPRITES/GerbangUI.png')
-            if score == 3:
+            if score == 20:
                 GAME_SPRITES['background'] = pygame.image.load('resources/SPRITES/DanauUI.png')
-            if score == 4:
+            if score == 30:
                 GAME_SPRITES['background'] = pygame.image.load('resources/SPRITES/JembatanTexas.png')
-            if score == 5:
+            if score == 40:
                 GAME_SPRITES['background'] = pygame.image.load('resources/SPRITES/PerpustakaanNasional.png')
-            if score == 6:
+            if score == 50:
                 GAME_SPRITES['background'] = pygame.image.load('resources/SPRITES/RektoratUI.png')
         
         #menang game
